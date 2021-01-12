@@ -4,6 +4,8 @@ const router = express.Router()
 require('dotenv').config()
 const axios = require('axios');
 const nodemailer = require("nodemailer");
+var schedule = require('node-schedule');
+
 // Configuration
 const PORT = 3000
 
@@ -32,7 +34,8 @@ let requests = setInterval(function(){
 
   counter++;
   console.log(`PING!!! ${counter} minutes on the page `)
-},10000)
+},86400000)
+// 60000 is one minute * 60 mins * 24 hours
 console.log(requests)
 
 
@@ -75,5 +78,5 @@ async function main(weatherData) {
 
 
 app.listen(PORT, () => {
-  console.log('ready to search for jobs on port', PORT)
+  console.log('ready to send the Weather from port', PORT)
 })
